@@ -1,7 +1,7 @@
 /**
- * SamsClub.java 1.0 August 20, 2016
+ * MinimumAbsoluteSum.java 1.0 August 20, 2016
  *
- * Copyright (c) 2016 David J. Powell, Dawn Winsor, Betsey McCarthy, Jen Rhodes
+ * Copyright (c) 2016 Dave Powell, Dawn Winsor, Betsey McCarthy, Jen Rhodes
  * Elon, North Carolina, 27244 U.S.A.
  * All Rights Reserved
  */
@@ -10,21 +10,23 @@ package edu.elon.math;
 import java.util.ArrayList;
 
 /**
- * Determines the profit value of building a new Sams Club at a particular
- * location. SamsClub extends Function.
+ * 
+ * Class extends Function. Takes 10 inputs between and including (-100 and 100).
+ * MinimumAbsoluteSum calculates the sum of the absolute values of the input
+ * parameters. The function is set up for minimization.
  * 
  * @author dpowell2, dwinsor, emccarthy, jrhodes
  * @version 1.0
  * 
  */
-public class SamsClub extends Function {
+public class MinimumAbsoluteSum extends Function {
 
 	/**
-	 * Default constructor to set initial input point to (-5, 0)
+	 * Default constructor to set initial input values
 	 * 
 	 */
-	public SamsClub() {
-		this(new double[] { -5, 0 });
+	public MinimumAbsoluteSum() {
+		this(new double[] { -100, 100, -100, 100, -100, 100, -100, 100, -100, 100 });
 	}
 
 	/**
@@ -34,7 +36,7 @@ public class SamsClub extends Function {
 	 * @param inputs ArrayList<Double> representing values for initial design
 	 * point.
 	 */
-	public SamsClub(ArrayList<Double> inputs) {
+	public MinimumAbsoluteSum(ArrayList<Double> inputs) {
 		this(inputs, createDefaultInputNames());
 	}
 
@@ -46,11 +48,11 @@ public class SamsClub extends Function {
 	 * point.
 	 * @param names ArrayList<String> representing names of each input parameter
 	 */
-	public SamsClub(ArrayList<Double> values, ArrayList<String> names) {
+	public MinimumAbsoluteSum(ArrayList<Double> values, ArrayList<String> names) {
 		this.setInputValues(values);
 		this.setInputNames(names);
 		this.setMinimize(false);
-		this.setTitle("Sams Club");
+		this.setTitle("Minimum Absolute Sum");
 	}
 
 	/**
@@ -59,16 +61,16 @@ public class SamsClub extends Function {
 	 * 
 	 * @param inputs double[] array of values to set initial design point.
 	 */
-	public SamsClub(double[] inputs) {
+	public MinimumAbsoluteSum(double[] inputs) {
 		ArrayList<Double> values = new ArrayList<Double>();
 		for (double d : inputs) {
 			values.add(new Double(d));
 		}
 		this.setInputValues(values);
 		this.setInputNames(createDefaultInputNames());
-		// maximize profit for Sams Club
-		this.setMinimize(false);
-		this.setTitle("Sams Club");
+
+		this.setMinimize(true);
+		this.setTitle("MinimumAbsoluteSum");
 	}
 
 	/**
@@ -79,22 +81,30 @@ public class SamsClub extends Function {
 	 */
 	private static ArrayList<String> createDefaultInputNames() {
 		ArrayList<String> names = new ArrayList<String>();
-		names.add("X");
-		names.add("Y");
+		names.add("Value1");
+		names.add("Value2");
+		names.add("Value3");
+		names.add("Value4");
+		names.add("Value5");
+		names.add("Value6");
+		names.add("Value7");
+		names.add("Value8");
+		names.add("Value9");
+		names.add("Value10");
 		return names;
 	}
 
 	/**
-	 * Determines if two SamsClub instances are the same based on having the same
-	 * values and names for each input
+	 * Determines if two MinimumabsoluteSum instances are the same based on having
+	 * the same values and names for each input
 	 * 
 	 * @return boolean true if input names and values are equal
 	 */
 	@Override
 	public boolean equals(Object o) {
 		boolean result = false;
-		if (o instanceof SamsClub) {
-			SamsClub sc = (SamsClub) o;
+		if (o instanceof MinimumAbsoluteSum) {
+			MinimumAbsoluteSum sc = (MinimumAbsoluteSum) o;
 			result = this.getInputNames().equals(sc.getInputNames()) && getInputValues().equals(sc.getInputValues());
 		}
 		return result;
@@ -108,12 +118,19 @@ public class SamsClub extends Function {
 	 */
 	@Override
 	public Double evaluate() {
-		double x = getInputValues().get(0).doubleValue();
-		double y = getInputValues().get(1).doubleValue();
-		double cost = 60.0 / (1 + Math.pow(x + 1, 2) + Math.pow(y - 3, 2))
-				+ 20.0 / (1 + Math.pow(x - 1, 2) + Math.pow(y - 3, 2)) + 30.0 / (1 + Math.pow(x, 2) + Math.pow(y + 4, 2));
+		double v1 = Math.abs(getInputValues().get(0).doubleValue());
+		double v2 = Math.abs(getInputValues().get(1).doubleValue());
+		double v3 = Math.abs(getInputValues().get(2).doubleValue());
+		double v4 = Math.abs(getInputValues().get(3).doubleValue());
+		double v5 = Math.abs(getInputValues().get(4).doubleValue());
+		double v6 = Math.abs(getInputValues().get(5).doubleValue());
+		double v7 = Math.abs(getInputValues().get(6).doubleValue());
+		double v8 = Math.abs(getInputValues().get(7).doubleValue());
+		double v9 = Math.abs(getInputValues().get(8).doubleValue());
+		double v10 = Math.abs(getInputValues().get(9).doubleValue());
+		double sum = v1 + v2 + v3 + v4 + v5 + v6 + v7 + v8 + v9 + v10;
 
-		this.setOutput(new Double(cost));
+		this.setOutput(new Double(sum));
 		return this.getOutput();
 
 	}
