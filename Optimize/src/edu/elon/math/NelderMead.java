@@ -1,5 +1,5 @@
 /**
- * NelderMead.java 1.0 October 24, 2016
+ * NelderMead.java 1.0 November 13, 2016
  *
  * Copyright (c) 2016 David J. Powell, Dawn Winsor, Betsey McCarthy, Jen Rhodes
  * Elon, North Carolina, 27244 U.S.A.
@@ -185,14 +185,12 @@ public class NelderMead implements Strategy {
 		Mini mini = new Mini(function);
 		mini.function(convertArrayListToDouble(function.getInputValues()));
 		Minimisation minimisation = new Minimisation();
-
 		double[] startPoint = convertArrayListToDouble(function.getInputValues());
 		minimisation.nelderMead(mini, startPoint, stepSize(startPoint), FTOL);
-
-		mini.function(convertArrayListToDouble(function.getInputValues()));
-		// minmax is our best minimum. Our "result" in the GUI
-		double minmax = mini.getMinimum();
-
+		double minmax = minimisation.getMinimum();
+		double [] bestInputs = minimisation.getParamValues();
+		function.setInputValues(convertDoubleArrayToArrayList(bestInputs));
+		minmax = function.evaluate();
 		return minmax;
 	}
 

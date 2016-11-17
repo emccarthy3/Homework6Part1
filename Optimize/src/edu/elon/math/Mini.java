@@ -1,5 +1,5 @@
 /**
- * Function.java 1.0 October 24, 2016
+ * Mini.java 1.0 November 13, 2016
  *
  * Copyright (c) 2016 Dawn Winsor, Betsey McCarthy, Jen Rhodes
  * Elon, North Carolina, 27244 U.S.A.
@@ -11,7 +11,7 @@ import flanagan.math.Minimisation;
 import flanagan.math.MinimisationFunction;
 
 /**
- * Mini class uses both Minimisation and MinimisationFunction in order to set
+ * Mini class uses MinimisationFunction in order to set
  * the proper values (minimisation function, start point, step value, and
  * conversion tolerance). It then calls evaluate on the function and returns the
  * result of the evaluation.
@@ -19,11 +19,10 @@ import flanagan.math.MinimisationFunction;
  * @author dwinsor, emcarthy, jrhodes
  *
  */
-public class Mini extends Minimisation implements MinimisationFunction {
-	private double a = 0.0D;
+public class Mini implements MinimisationFunction {
 	private Function function;
 	private NelderMead nelderMead;
-
+	
 	/**
 	 * Constructor that gets passed a function.
 	 * 

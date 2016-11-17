@@ -1,5 +1,5 @@
 /**
- * Function.java 1.0 August 20, 2016
+ * Powell.java 1.0 August 20, 2016
  *
  * Copyright (c) 2016 David J. Powell, Dawn Winsor, Betsey McCarthy, Jen Rhodes
  * Elon, North Carolina, 27244 U.S.A.
